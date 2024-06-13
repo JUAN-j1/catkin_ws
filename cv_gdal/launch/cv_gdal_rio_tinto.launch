@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+
+  <!--include file="$(find unit4_pp)/launch/unit4_solution.launch" /-->
+    <!--include file="$(find unit3_pp)/launch/unit3_dijkstra.launch" /-->
+      <!--include file="$(find unit3_pp)/launch/unit3_astar_solution.launch" /-->
+        <!--include file="$(find unit3_pp)/launch/unit3_gbfs_solution.launch" /-->
+        
+  <node pkg="cv_gdal" name="opencv_gdal_rio_tinto" type="opencv_gdal_rio_tinto" output="screen"/>
+  
+
+</launch>
