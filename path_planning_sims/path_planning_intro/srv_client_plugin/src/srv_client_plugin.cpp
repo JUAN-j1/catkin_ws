@@ -11,6 +11,7 @@ FILE *fp3;
 FILE *fp4;
 FILE *fp5;
 FILE *fp6;
+FILE *fp7;
 
 // register this planner as a BaseGlobalPlanner plugin
 PLUGINLIB_EXPORT_CLASS(srv_client_plugin::SrvClientPlugin, nav_core::BaseGlobalPlanner)
@@ -64,199 +65,132 @@ namespace srv_client_plugin
   }
 
 
-void	  rio_tinto_2d_world(int x1,int y1,int oz1)
+void	  mega_timanfaya_world(int x1,int y1,int oz1)
 {
-		fprintf(fp5,"<sdf version='1.6'>\n");
-		fprintf(fp5,"<world name='default'> \n");
-		fprintf(fp5,"<scene>\n");  
-		fprintf(fp5,"<shadows> false </shadows>\n");
-		fprintf(fp5,"<ambient>0.4 0.4 0.4 1.0</ambient>\n");
-		fprintf(fp5,"<background>0.290 0.337 0.560 0.7</background>\n");
-		fprintf(fp5,"<grid>false</grid>\n");
-		fprintf(fp5,"<sky>\n");
-		fprintf(fp5,"<time>17</time>\n");
-		fprintf(fp5,"<sunrise>15</sunrise>\n");
-		fprintf(fp5,"<sunset>18</sunset>\n");
-		fprintf(fp5,"<clouds>\n");
-		fprintf(fp5,"<humidity>0.01</humidity>\n");
-		fprintf(fp5,"</clouds>\n");
-		fprintf(fp5,"</sky>\n");
-		fprintf(fp5,"</scene>\n");  
-		fprintf(fp5,"<physics type='ode'>\n");
-		fprintf(fp5,"<gravity>0 0 -9.8</gravity>\n");
-		fprintf(fp5,"<scene>\n");
-		fprintf(fp5,"<shadows> false </shadows>\n");
-		fprintf(fp5,"<ambient>0.4 0.4 0.4 1.0</ambient>\n");
-		fprintf(fp5,"<background>0.290 0.337 0.560 0.7</background>\n");
-		fprintf(fp5,"<grid>false</grid>\n");
-		fprintf(fp5,"<sky>\n");
-		fprintf(fp5,"<time>17</time>\n");
-		fprintf(fp5,"<sunrise>15</sunrise>\n");
-		fprintf(fp5,"<sunset>18</sunset>\n");
-		fprintf(fp5,"<clouds>\n");
-		fprintf(fp5,"<humidity>0.01</humidity>\n");
-		fprintf(fp5,"</clouds>\n");
-		fprintf(fp5,"</sky>\n");
-		fprintf(fp5,"</scene>\n");
-		fprintf(fp5,"<ode>\n");
-		fprintf(fp5,"<solver>\n");
-		fprintf(fp5,"<!--type>quick</type>\n");
-		fprintf(fp5,"<dt>0.001</dt>\n");
-		fprintf(fp5,"<iters>40</iters>\n");
-		fprintf(fp5,"<sor>1.0</sor -->\n");
-		fprintf(fp5,"<!-- type>quick</type>\n");
-   		fprintf(fp5,"<dt>0.01</dt>\n");
-	        fprintf(fp5,"<iters>20</iters>\n");
-   		fprintf(fp5,"<sor>1.0</sor -->\n");
-   		fprintf(fp5,"<type>quick</type>\n");
-		fprintf(fp5,"<!--dt>0.001</dt-->\n");
-		fprintf(fp5,"<iters>20</iters>\n");
-		fprintf(fp5,"<sor>1.0</sor>\n");
-		fprintf(fp5,"</solver>\n");
-		fprintf(fp5,"<constraints>\n");
-		fprintf(fp5,"<cfm>0.0</cfm>\n");
-		fprintf(fp5,"<erp>0.2</erp>\n");
-		fprintf(fp5,"<contact_max_correcting_vel>100.0</contact_max_correcting_vel>\n");
-		fprintf(fp5,"<contact_surface_layer>0.0</contact_surface_layer>\n");
-		fprintf(fp5,"</constraints>\n");
-	        fprintf(fp5,"</ode>\n");
-		fprintf(fp5,"<max_step_size>0.001</max_step_size>\n");
-		fprintf(fp5,"</physics>\n");
-		fprintf(fp5,"<include>\n");
-		fprintf(fp5,"<uri>model://sun</uri>\n");
-		fprintf(fp5,"</include>\n");
-		fprintf(fp5,"<include>\n");
-		fprintf(fp5,"<uri>model://map_satellite_rio_tinto</uri>\n");
-		fprintf(fp5,"<pose>  %f %f %f 0 0 0</pose>\n",float((1361)-(2*x1)),float((787)-(2*y1)),0.0);
-		fprintf(fp5,"</include>\n");
-		fprintf(fp5,"</world>\n");
-		fprintf(fp5,"</sdf>\n");
+//715:la cabrera // 787:rio tinto // 785: timanfaya	
+fprintf(fp7,"<?xml version='1.0'?> \n");
+fprintf(fp7,"<launch> \n");
+fprintf(fp7,"<include file='$(find summit_xl_sim_bringup)/launch/summit_xl_gps_complete.launch'> \n");
+fprintf(fp7,"<arg name='gazebo_world' value='$(find summit_xl_gazebo)/worlds/timanfaya_3D.world'/> \n");
+fprintf(fp7,"\n");
+fprintf(fp7,"<arg name='x_init_pose_a' value='%f ' /> \n",float((785)-(2*x1)) );
+fprintf(fp7,"<arg name='y_init_pose_a' value='%f ' /> \n",float((785)-(2*y1)) );
+fprintf(fp7,"<arg name='z_init_pose_a' value='%f ' /> \n",0.0);
+fprintf(fp7,"\n");
+fprintf(fp7,"<arg name='x_init_pose_b' value='%f ' /> \n",float((785)-(2*x1)) -4 );
+fprintf(fp7,"<arg name='y_init_pose_b' value='%f ' /> \n",float((785)-(2*y1)));
+fprintf(fp7,"<arg name='z_init_pose_b' value='%f ' /> \n",0.0);
+fprintf(fp7,"\n");
+fprintf(fp7,"<arg name='x_init_pose_c' value='%f ' /> \n",float((785)-(2*x1))-8 );
+fprintf(fp7,"<arg name='y_init_pose_c' value='%f ' /> \n",float((785)-(2*y1)));
+fprintf(fp7,"<arg name='z_init_pose_c' value='%f ' /> \n",0.0);
+fprintf(fp7,"\n");
+fprintf(fp7,"<arg name='x_init_pose_d' value='%f ' /> \n",float((785)-(2*x1)) -12);
+fprintf(fp7,"<arg name='y_init_pose_d' value='%f ' /> \n",float((785)-(2*y1)));
+fprintf(fp7,"<arg name='z_init_pose_d' value='%f ' /> \n",0.0);
+fprintf(fp7,"\n");
+fprintf(fp7,"</include> \n");
+fprintf(fp7,"<include file='$(find summit_xl_localization)/launch/map_server.launch'> \n");
+fprintf(fp7,"<arg name='map_file' value='real/unitX_map.yaml'/> \n");
+fprintf(fp7,"</include> \n");
+fprintf(fp7,"<include file='$(find summit_xl_localization)/launch/navsat_transform_node.launch'> \n");
+fprintf(fp7,"</include> \n");
+fprintf(fp7,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster'  args='%f %f %f 0 0 0  robot_map robot_odom 100' /> \n",-float((785)-(2*x1)),float((785)-(2*y1)),0.0);
+fprintf(fp7,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster1'  args='%f %f %f 0 0 0  robot_b_map robot_b_odom 100' /> \n",-float((785)-(2*x1)),float((785)-(2*y1)),0.0);
+fprintf(fp7,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster2'  args='%f %f %f 0 0 0  robot_c_map robot_c_odom 100' /> \n",-float((785)-(2*x1)),float((785)-(2*y1)),0.0);
+fprintf(fp7,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster3'  args='%f %f %f 0 0 0  robot_d_map robot_d_odom 100' /> \n",-float((785)-(2*x1)),float((785)-(2*y1)),0.0);
+fprintf(fp7,"\n");
+fprintf(fp7," <node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster4' args='0 0 0 0 0 0 robot_map robot_b_map 100' /> \n");
+fprintf(fp7,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster5' args='0 0 0 0 0 0 robot_map robot_c_map 100' /> \n");
+fprintf(fp7,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster6' args='0 0 0 0 0 0 robot_map robot_d_map 100' /> \n");
+fprintf(fp7,"\n");
+fprintf(fp7,"	</launch> \n");
+
 }
 
-void	  rio_tinto_3d_world_blender(int x1,int y1,int oz1)
+void	  mega_rio_tinto_world(int x1,int y1,int oz1)
 {
-//715,722: la cabrera 1361,787: rio tinto
-	  
-	  fprintf(fp3,"<sdf version='1.6'>\n");
-    	  fprintf(fp3,"<world name='default'>\n");
-    	  fprintf(fp3," <gravity>0 0 0</gravity>\n"); 
-	  fprintf(fp3,"<scene>\n");
-	  fprintf(fp3,"<shadows> false </shadows>\n");
-	  fprintf(fp3,"<ambient>0.4 0.4 0.4 1.0</ambient>\n");
-	  fprintf(fp3,"<background>0.290 0.337 0.560 0.7</background>\n");
-	  fprintf(fp3,"<grid>false</grid>\n");
-	  fprintf(fp3,"<sky>\n");
-	  fprintf(fp3,"<time>17</time>\n");
-	  fprintf(fp3,"<sunrise>15</sunrise>\n");
-	  fprintf(fp3,"<sunset>18</sunset>\n");
-	  fprintf(fp3,"<clouds>\n");
-	  fprintf(fp3,"<humidity>0.01</humidity>\n");
-	  fprintf(fp3,"</clouds>\n");
-	  fprintf(fp3,"</sky>\n");
-	  fprintf(fp3,"</scene>\n");
-      	  fprintf(fp3,"<include>\n");
-	  fprintf(fp3,"<uri>model://sun</uri>\n");
-	  fprintf(fp3,"</include>\n");
-      	  fprintf(fp3,"<include>\n");
-    	  fprintf(fp3,"<name>terrain_1</name>\n");
-      	  fprintf(fp3,"<uri>model://terrain_1</uri>\n");
-	  fprintf(fp3,"<pose> %f %f %f 0 0 0</pose>\n",float((1361)-(2*x1)),float((787)-(2*y1)),float(-oz1)); //715,722: la cabrera 1361,787: rio tinto
-	  fprintf(fp3,"</include>\n");
-	  fprintf(fp3,"<gui fullscreen='0'>\n");
-    	  fprintf(fp3,"<camera name='user_camera'>\n");
-      	  fprintf(fp3,"<pose frame=''>9.0 -12.0 6.0 0.0 0.3 2.2</pose>\n");
-	  fprintf(fp3,"<view_controller>orbit</view_controller>\n");
-	  fprintf(fp3,"<projection_type>perspective</projection_type>\n");
-	  fprintf(fp3,"</camera>\n");
-	  fprintf(fp3,"</gui>\n");
-	  fprintf(fp3,"</world>\n");
-	  fprintf(fp3,"</sdf>\n");    
+//715:la cabrera // 787:rio tinto // 785: timanfaya	
+fprintf(fp5,"<?xml version='1.0'?> \n");
+fprintf(fp5,"<launch> \n");
+fprintf(fp5,"<include file='$(find summit_xl_sim_bringup)/launch/summit_xl_gps_complete.launch'> \n");
+fprintf(fp5,"<arg name='gazebo_world' value='$(find summit_xl_gazebo)/worlds/timanfaya_3D.world'/> \n");
+
+fprintf(fp5,"<arg name='x_init_pose_a' value='%f ' /> \n",float((785)-(2*x1)) );
+fprintf(fp5,"<arg name='y_init_pose_a' value='%f ' /> \n",float((785)-(2*y1)) );
+fprintf(fp5,"<arg name='z_init_pose_a' value='%f ' /> \n",0.0);
+
+fprintf(fp5,"<arg name='x_init_pose_b' value='%f ' /> \n",float((785)-(2*x1)) );
+fprintf(fp5,"<arg name='y_init_pose_b' value='%f ' /> \n",float((785)-(2*y1)));
+fprintf(fp5,"<arg name='z_init_pose_b' value='%f ' /> \n",0.0);
+
+fprintf(fp5,"<arg name='x_init_pose_c' value='%f ' /> \n",float((785)-(2*x1)) );
+fprintf(fp5,"<arg name='y_init_pose_c' value='%f ' /> \n",float((785)-(2*y1)));
+fprintf(fp5,"<arg name='z_init_pose_c' value='%f ' /> \n",0.0);
+
+fprintf(fp5,"<arg name='x_init_pose_d' value='%f ' /> \n",float((785)-(2*x1)) );
+fprintf(fp5,"<arg name='y_init_pose_d' value='%f ' /> \n",float((785)-(2*y1)));
+fprintf(fp5,"<arg name='z_init_pose_d' value='%f ' /> \n",0.0);
+
+fprintf(fp5,"</include> \n");
+fprintf(fp5,"<include file='$(find summit_xl_localization)/launch/map_server.launch'> \n");
+fprintf(fp5,"<arg name='map_file' value='real/unitX_map.yaml'/> \n");
+fprintf(fp5,"</include> \n");
+fprintf(fp5,"<include file='$(find summit_xl_localization)/launch/navsat_transform_node.launch'> \n");
+fprintf(fp5,"</include> \n");
+fprintf(fp5,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster'  args='%f %f %f 0 0 0  robot_map robot_odom 100' /> \n",float((785)-(2*x1)),float((785)-(2*y1)),0.0);
+fprintf(fp5,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster1'  args='%f %f %f 0 0 0  robot_b_map robot_b_odom 100' /> \n",float((785)-(2*x1)),float((785)-(2*y1)),0.0);
+fprintf(fp5,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster2'  args='%f %f %f 0 0 0  robot_c_map robot_c_odom 100' /> \n",float((785)-(2*x1)),float((785)-(2*y1)),0.0);
+fprintf(fp5,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster3'  args='%f %f %f 0 0 0  robot_d_map robot_d_odom 100' /> \n",float((785)-(2*x1)),float((785)-(2*y1)),0.0);
+
+fprintf(fp5," <node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster4' args='0 0 0 0 0 0 robot_map robot_b_map 100' /> \n");
+fprintf(fp5,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster5' args='0 0 0 0 0 0 robot_map robot_c_map 100' /> \n");
+fprintf(fp5,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster6' args='0 0 0 0 0 0 robot_map robot_d_map 100' /> \n");
+
+fprintf(fp5,"	</launch> \n");
+
 }
 
-void	  rio_tinto_3d_world_gazebo(int x1,int y1,int oz1)
+void	  mega_lacabrera_world(int x1,int y1,int oz1)
 {
-//715,722: la cabrera 1361,787: rio tinto
-	  
-fprintf(fp6,"<?xml version='1.0' ?>\n");
-fprintf(fp6,"<sdf version='1.4'>\n");
-fprintf(fp6,"<world name='default'>\n");
-fprintf(fp6,"<gravity>0 0 0</gravity>\n");
+//715:la cabrera // 787:rio tinto // 785: timanfaya	
+fprintf(fp6,"<?xml version='1.0'?> \n");
+fprintf(fp6,"<launch> \n");
+fprintf(fp6,"<include file='$(find summit_xl_sim_bringup)/launch/summit_xl_gps_complete.launch'> \n");
+fprintf(fp6,"<arg name='gazebo_world' value='$(find summit_xl_gazebo)/worlds/timanfaya_3D.world'/> \n");
 
-fprintf(fp6,"<scene>\n");
-fprintf(fp6,"<shadows> false </shadows>\n");
-fprintf(fp6,"<ambient>0.4 0.4 0.4 1.0</ambient>\n");
-fprintf(fp6,"<background>0.290 0.337 0.560 0.7</background>\n");
-fprintf(fp6,"<grid>false</grid>\n");
-fprintf(fp6,"<sky>\n");
-fprintf(fp6,"<time>17</time>\n");
-fprintf(fp6,"<sunrise>15</sunrise>\n");
-fprintf(fp6,"<sunset>18</sunset>\n");
-fprintf(fp6,"<clouds>\n");
-fprintf(fp6,"<humidity>0.01</humidity>\n");
-fprintf(fp6,"</clouds>\n");
-fprintf(fp6,"</sky>\n");
-fprintf(fp6,"</scene>\n");
+fprintf(fp6,"<arg name='x_init_pose_a' value='%f ' /> \n",float((785)-(2*x1)) );
+fprintf(fp6,"<arg name='y_init_pose_a' value='%f ' /> \n",float((785)-(2*y1)) );
+fprintf(fp6,"<arg name='z_init_pose_a' value='%f ' /> \n",0.0);
 
+fprintf(fp6,"<arg name='x_init_pose_b' value='%f ' /> \n",float((785)-(2*x1)) );
+fprintf(fp6,"<arg name='y_init_pose_b' value='%f ' /> \n",float((785)-(2*y1)));
+fprintf(fp6,"<arg name='z_init_pose_b' value='%f ' /> \n",0.0);
 
-fprintf(fp6,"<include>\n");
-fprintf(fp6,"<uri>model://sun</uri>\n");
-fprintf(fp6,"</include>\n");
+fprintf(fp6,"<arg name='x_init_pose_c' value='%f ' /> \n",float((785)-(2*x1)) );
+fprintf(fp6,"<arg name='y_init_pose_c' value='%f ' /> \n",float((785)-(2*y1)));
+fprintf(fp6,"<arg name='z_init_pose_c' value='%f ' /> \n",0.0);
 
-fprintf(fp6,"<model name='heightmap'>\n");
-fprintf(fp6,"<static>true</static>\n");
-fprintf(fp6,"<link name='link'>\n");
-fprintf(fp6,"<collision name='collision'>\n");
-fprintf(fp6,"<geometry>\n");
-fprintf(fp6,"<heightmap>\n");
-fprintf(fp6,"<uri>file://rio_tinto/output_dem3.tif</uri>\n");
-fprintf(fp6,"<size>1574 1574 242</size>\n");
-//fprintf(fp6,"<pos> %f %f %f 0 0 0</pos>\n",float((787)-(2*x1)),float((787)-(2*y1)),float(-oz1)); //715,722: la cabrera 1361,787: rio tinto
-fprintf(fp6,"<pos> 0 0 0 0 0 0</pos>\n");
-fprintf(fp6,"</heightmap>\n");
-fprintf(fp6,"</geometry>\n");
-fprintf(fp6,"</collision>\n");
+fprintf(fp6,"<arg name='x_init_pose_d' value='%f ' /> \n",float((785)-(2*x1)) );
+fprintf(fp6,"<arg name='y_init_pose_d' value='%f ' /> \n",float((785)-(2*y1)));
+fprintf(fp6,"<arg name='z_init_pose_d' value='%f ' /> \n",0.0);
 
-fprintf(fp6,"<visual name='visual_abcedf'>\n");
-fprintf(fp6," <geometry>\n");
-fprintf(fp6,"<heightmap> \n");
-fprintf(fp6,"  <texture> \n");
-fprintf(fp6,"   <diffuse>file://rio_tinto/output_image2.png</diffuse>\n");
-fprintf(fp6,"   <normal>file://rio_tinto/output_image2.png </normal> \n");
-fprintf(fp6,"  <size>1574 </size>\n");
-fprintf(fp6," </texture>\n");
+fprintf(fp6,"</include> \n");
+fprintf(fp6,"<include file='$(find summit_xl_localization)/launch/map_server.launch'> \n");
+fprintf(fp6,"<arg name='map_file' value='real/unitX_map.yaml'/> \n");
+fprintf(fp6,"</include> \n");
+fprintf(fp6,"<include file='$(find summit_xl_localization)/launch/navsat_transform_node.launch'> \n");
+fprintf(fp6,"</include> \n");
+fprintf(fp6,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster'  args='%f %f %f 0 0 0  robot_map robot_odom 100' /> \n",float((785)-(2*x1)),float((785)-(2*y1)),0.0);
+fprintf(fp6,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster1'  args='%f %f %f 0 0 0  robot_b_map robot_b_odom 100' /> \n",float((785)-(2*x1)),float((785)-(2*y1)),0.0);
+fprintf(fp6,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster2'  args='%f %f %f 0 0 0  robot_c_map robot_c_odom 100' /> \n",float((785)-(2*x1)),float((785)-(2*y1)),0.0);
+fprintf(fp6,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster3'  args='%f %f %f 0 0 0  robot_d_map robot_d_odom 100' /> \n",float((785)-(2*x1)),float((785)-(2*y1)),0.0);
 
-fprintf(fp6,"<texture>\n");
-fprintf(fp6,"<diffuse>file://rio_tinto/output_image2.png</diffuse>\n");
-fprintf(fp6,"<normal>file://rio_tinto/output_image2.png</normal>\n");
-fprintf(fp6,"<size>1574 </size>\n");
-fprintf(fp6,"</texture>\n");
+fprintf(fp6," <node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster4' args='0 0 0 0 0 0 robot_map robot_b_map 100' /> \n");
+fprintf(fp6,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster5' args='0 0 0 0 0 0 robot_map robot_c_map 100' /> \n");
+fprintf(fp6,"<node pkg='tf' type='static_transform_publisher' name='static_map_broadcaster6' args='0 0 0 0 0 0 robot_map robot_d_map 100' /> \n");
 
-fprintf(fp6,"<texture>\n");
-fprintf(fp6,"<diffuse>file://rio_tinto/output_image2.png</diffuse> \n");
-fprintf(fp6,"<normal>file://rio_tinto/output_image2.png</normal>\n");
-fprintf(fp6,"<size>1574  </size>\n");
-fprintf(fp6,"</texture>\n");
-
-fprintf(fp6,"<blend>\n");
-fprintf(fp6,"<min_height>2</min_height>\n");
-fprintf(fp6,"<fade_dist>0.1</fade_dist>\n");
-fprintf(fp6,"</blend>\n");
-fprintf(fp6,"<blend>\n");
-fprintf(fp6,"<min_height>2</min_height>\n");
-fprintf(fp6,"<fade_dist>0.1</fade_dist>\n");
-fprintf(fp6,"</blend>\n");
-
-fprintf(fp6,"<uri>file://rio_tinto/output_dem3.tif</uri>\n");
-fprintf(fp6,"<size>1574 1574 242</size>\n");
-//fprintf(fp6,"<pos> %f %f %f 0 0 0</pos>\n",float((787)-(2*x1)),float((787)-(2*y1)),float(-oz1)); //715,722: la cabrera 1361,787: rio tinto
-fprintf(fp6,"<pos> 0 0 0 0 0 0</pos>\n"); 
-fprintf(fp6,"</heightmap>\n");
-fprintf(fp6,"</geometry>\n");
-fprintf(fp6,"</visual>\n");
-fprintf(fp6,"</link>\n");
-fprintf(fp6,"</model>\n");
-fprintf(fp6,"</world>\n");
-fprintf(fp6,"</sdf>\n");
+fprintf(fp6,"	</launch> \n");
 
 }
 
@@ -335,8 +269,11 @@ fprintf(fp6,"</sdf>\n");
         fp2 = fopen("/home/juanmat/catkin_summit_xl/src/summit_xl_common/summit_xl_localization/maps/real/unitX_map.yaml","w");
         fp3 = fopen( "/home/juanmat/catkin_ws/src/gazebo_terrain_tutorial/worlds/terrain_1.world","w");
         fp4 = fopen( "/home/juanmat/catkin_ws/src/path_planning_sims/path_planning_intro/unit4_pp/maps/map_coords.txt","r");
-        fp5 = fopen( "/home/juanmat/catkin_summit_xl/src/summit_xl_sim/summit_xl_gazebo/worlds/rio_tinto_2D.world","w");
-        fp6 = fopen( "/home/juanmat/catkin_summit_xl/src/summit_xl_sim/summit_xl_gazebo/worlds/rio_tinto_3D.world","w");
+        
+        fp5 = fopen( "/home/juanmat/catkin_summit_xl/src/summit_xl_sim/summit_xl_sim_bringup/launch/mega_gps_rio_tinto.launch","w");
+        fp6 = fopen( "/home/juanmat/catkin_summit_xl/src/summit_xl_sim/summit_xl_sim_bringup/launch/mega_gps_lacabrera.launch","w");
+        fp7 = fopen( "/home/juanmat/catkin_summit_xl/src/summit_xl_sim/summit_xl_sim_bringup/launch/mega_gps_timanfaya.launch","w");
+        
         fprintf(fp,"INDEX\tGRID\tWORLD\n");
        
      int cont =0;
@@ -363,34 +300,10 @@ fprintf(fp6,"</sdf>\n");
 	  fscanf(fp4,"%d,%d,%d,",&x1,&y1,&oz1); 
 	  fscanf(fp4,"%d,%d,%d,%d",&x2,&y2,&oz2,&oz3); 
 
-	  rio_tinto_2d_world(x1,y1,oz1);
-  	  rio_tinto_3d_world_blender(x1,y1,oz1);
-  	  rio_tinto_3d_world_gazebo(x1,y1,oz1);
-	  /*
-    	  fprintf(fp3,"<sdf version='1.6'>\n");
-    	  fprintf(fp3,"<world name='default'>\n");
-    	  fprintf(fp3," <gravity>0 0 0</gravity>\n");
-      	  fprintf(fp3,"<include>\n");
-	  fprintf(fp3,"<uri>model://sun</uri>\n");
-	  fprintf(fp3,"</include>\n");
-	  
-      	  fprintf(fp3,"<include>\n");
-    	  fprintf(fp3,"<name>terrain_1</name>\n");
-      	  fprintf(fp3,"<uri>model://terrain_1</uri>\n");
-	  fprintf(fp3,"<pose> %f %f %f 0 0 0</pose>\n",float((1361/2)-(x1/2)),float((787/2)-(y1/2)),float(-oz1)); //715,722: la cabrera 1361,787: rio tinto
-	  fprintf(fp3,"</include>\n");
-  
-	  fprintf(fp3,"<gui fullscreen='0'>\n");
-    	  fprintf(fp3,"<camera name='user_camera'>\n");
-      	  fprintf(fp3,"<pose frame=''>9.0 -12.0 6.0 0.0 0.3 2.2</pose>\n");
-	  fprintf(fp3,"<view_controller>orbit</view_controller>\n");
-	  fprintf(fp3,"<projection_type>perspective</projection_type>\n");
-	  fprintf(fp3,"</camera>\n");
-	  fprintf(fp3,"</gui>\n");
-	  fprintf(fp3,"</world>\n");
-	  fprintf(fp3,"</sdf>\n");    
-	  */
-    	 
+	  mega_timanfaya_world(x1,y1,oz1);
+  	  mega_rio_tinto_world(x1,y1,oz1);
+  	  mega_lacabrera_world(x1,y1,oz1);
+	 
 	  }
           FromGridToWorld(x_path, y_path);
           fprintf(fp,"%f,%f\n",x_path,y_path);
@@ -412,6 +325,7 @@ fprintf(fp6,"</sdf>\n");
           fclose(fp4);
              fclose(fp5);
               fclose(fp6);
+               fclose(fp7);
 
 
 
