@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   actionlib
   move_base_msgs
   roscpp
+  gazebo_ros
 )
 find_package( PkgConfig REQUIRED )
 pkg_check_modules( ncurses++ REQUIRED ncurses++ )
@@ -138,9 +139,14 @@ include_directories(
 # add_executable(${PROJECT_NAME}_node src/simple_navigation_goals_node.cpp)
 add_executable(simple_navigation_goals src/simple_navigation_goals.cpp)
 add_executable(odom_listener src/odom_listener.cpp)
+add_executable(gravity_modifier src/gravity_modifier.cpp)
+
 add_dependencies(odom_listener nav_msgs_generate_messages_cpp)
 add_dependencies(odom_listener ${catkin_EXPORTED_TARGETS} odom_listener)
+
+
 target_link_libraries(simple_navigation_goals ${catkin_LIBRARIES})
+target_link_libraries(gravity_modifier ${catkin_LIBRARIES})
 target_link_libraries(odom_listener ${catkin_LIBRARIES} ncurses)
 target_link_libraries(odom_listener ${ncurses++_LIBRARIES})
 ## Rename C++ executable without prefix
