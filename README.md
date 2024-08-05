@@ -19,7 +19,9 @@ El último paquete manda esta trayectoria a la flota de robots para su navegaci�
 `rosrun simple_navigation_goals simple_navigation_goals`
 `rosrun simple_navigation_goals odom_listener`
 
-Adicionalmente se debe hacer uso de los paquetes del summit xl que proporciona la compañía: https://github.com/RobotnikAutomation/summit_xl_sim
+Adicionalmente se debe hacer uso de los paquetes del summit xl que proporciona la compañía:
+
+https://github.com/RobotnikAutomation/summit_xl_sim
 
 Estos paquetes han sido modificados para los propósitos de este proyecto y se pueden encontrar en:
 
