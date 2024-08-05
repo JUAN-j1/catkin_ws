@@ -17,6 +17,7 @@ Para usar el RRT: `roslaunch path_planning_sims unit4_solution.launch`
 El último paquete manda esta trayectoria a la flota de robots para su navegación autónoma, que se controlará mediante los dos siguientes comandos:
 
 `rosrun simple_navigation_goals simple_navigation_goals`
+
 `rosrun simple_navigation_goals odom_listener`
 
 Adicionalmente se debe hacer uso de los paquetes del summit xl que proporciona la compañía:
