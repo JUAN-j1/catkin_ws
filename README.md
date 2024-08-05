@@ -14,7 +14,7 @@ Para usar el GBFS: `unit3_gbfs_solution.launch`
 
 Para usar el RRT: `unit4_solution.launch`
 
-El último paquete manda esta trayectoria a la flota de robots para su navegación autónoma. Una vez iniciada la simulación en gazebo a través del comando:`mega_gpps.launch`, se controlará la navegación autónoma mediante los dos siguientes comandos:
+El último paquete manda esta trayectoria a la flota de robots para su navegación autónoma. Una vez iniciada la simulación en gazebo a través del comando:`mega_gps.launch`, se controlará la navegación autónoma mediante los dos siguientes comandos:
 
 `rosrun simple_navigation_goals simple_navigation_goals`
 `rosrun simple_navigation_goals odom_listener`
