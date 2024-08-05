@@ -22,6 +22,8 @@ El último paquete manda esta trayectoria a la flota de robots para su navegaci�
 Adicionalmente se debe hacer uso de los paquetes del summit xl que proporciona la compañía: https://github.com/RobotnikAutomation/summit_xl_sim
 
 Estos paquetes han sido modificados para los propósitos de este proyecto y se pueden encontrar en:
+
 https://github.com/JUAN-j1/summit_xl_sim
+
 https://github.com/JUAN-j1/summit_xl_common
 
