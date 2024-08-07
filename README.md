@@ -1,6 +1,6 @@
 Este repositorio contiene tres paquetes para la planificación de trayectorias en navegación en exteriores de una flota de cuatro robots de la compañía Robotnik.
 
-En primer lugar, el paquete cv_gdal permite elaborar un mapa binarion de ocupación. Para ello, se debe ejecutar el comando:
+En primer lugar, el paquete cv_gdal permite elaborar un mapa binario de ocupación. Para ello, se debe ejecutar el comando:
 `roslaunch cv_gdal cv_gdal.launch`
 
 Una vez elaborado el mapa se procede a la planificación de trayectorias sobre el mismo. En este caso, se hace uso del paquete path_planning_sims, elaborado a partir del código de Roberto Zegers R.
